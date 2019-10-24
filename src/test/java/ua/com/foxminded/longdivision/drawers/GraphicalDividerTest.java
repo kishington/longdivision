@@ -39,7 +39,7 @@ class GraphicalDividerTest {
         "43, 20, 2, 3"
 
     })
-    void divide_SouldReverseLettersWhenPassedLettersOnly(int dividend, int divisor, int expectedQuotient, int expectedRemainder) {
+    void divide_ReturnsCorrectQuotientAndRemainder(int dividend, int divisor, int expectedQuotient, int expectedRemainder) {
         int[] expectedResult = new int[] {expectedQuotient, expectedRemainder};
         int[] actualResult = divisionMate.divide(dividend, divisor);
         assertArrayEquals(expectedResult, actualResult);
