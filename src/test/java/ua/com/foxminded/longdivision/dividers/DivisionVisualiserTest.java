@@ -1,4 +1,4 @@
-package ua.com.foxminded.longdivision.drawers;
+package ua.com.foxminded.longdivision.dividers;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -7,7 +7,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-class GraphicalDividerTest {
+import ua.com.foxminded.longdivision.dividers.DivisionMate;
+
+class DivisionVisualiserTest {
     private static DivisionMate divisionMate;
     
     @BeforeAll
@@ -16,17 +18,17 @@ class GraphicalDividerTest {
     }
 
     @Test
-    public void divide_NegativeNumberAs1stParam_IllegalArgumentExceptionThrown() {
+    public void divide_NegativeNumberAs1stArgument_IllegalArgumentExceptionThrown() {
         assertThrows(IllegalArgumentException.class, () -> divisionMate.divide(-4, 6));
     }
     
     @Test
-    public void divide_NegativeNumberAs2ndParam_IllegalArgumentExceptionThrown() {
+    public void divide_NegativeNumberAs2ndArgument_IllegalArgumentExceptionThrown() {
         assertThrows(IllegalArgumentException.class, () -> divisionMate.divide(2, -8));
     }
     
     @Test
-    public void divide_ZeroAs2ndParam_ArithmeticExceptionThrown() {
+    public void divide_ZeroAs2ndArgument_ArithmeticExceptionThrown() {
         assertThrows(ArithmeticException.class, () -> divisionMate.divide(4, 0));
     }
     
@@ -39,10 +41,11 @@ class GraphicalDividerTest {
         "43, 20, 2, 3"
 
     })
-    void divide_ReturnsCorrectQuotientAndRemainder(int dividend, int divisor, int expectedQuotient, int expectedRemainder) {
+    void divide_ValidArgumentsPassed_ReturnsCorrectOutput(int dividend, int divisor, int expectedQuotient, int expectedRemainder) {
         int[] expectedResult = new int[] {expectedQuotient, expectedRemainder};
         int[] actualResult = divisionMate.divide(dividend, divisor);
         assertArrayEquals(expectedResult, actualResult);
     }
 
 }
+
