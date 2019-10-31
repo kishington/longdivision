@@ -3,6 +3,7 @@ package ua.com.foxminded.longdivision.dividers;
 public class DivisionVisualiser {
 
     public void visualiseLongDivisionAlgorithm(int dividend, int divisor) {
+        drawFirstThreeLines(dividend, divisor);
         
         int quotient = dividend / divisor;
         int remainder = dividend % divisor;
@@ -19,25 +20,6 @@ public class DivisionVisualiser {
         int currentMultiple = interimDividends[0] / divisor * divisor;
         int currentMultipleLength = digitsHandler.getNumberOfDigits(currentMultiple);
         
-        
-        System.out.println("_" + dividend + "|" + divisor);
-        
-        int numberOfSpacesFromLeftEdge = 1 + currentInterimDividendLength - currentMultipleLength;
-        printCharNTimes(' ', numberOfSpacesFromLeftEdge);
-        System.out.print(currentMultiple);
-        printCharNTimes(' ', dividendLength - currentMultipleLength);
-        System.out.print("|");
-        if (divisorLength > quotientLength) {
-            printCharNTimes('-', divisorLength);
-        }
-        else {
-            printCharNTimes('-', quotientLength);
-        }
-        System.out.println();
-        printCharNTimes(' ', numberOfSpacesFromLeftEdge);
-        printCharNTimes('-', currentMultipleLength);
-        printCharNTimes(' ', dividendLength - currentMultipleLength);
-        System.out.println("|" + quotient);
       
     }
     
