@@ -35,8 +35,8 @@ class DigitsHandlerTest {
     void testReplaceDigits() {
         int startIndex = 3;
         int[] newDigits = { 5, 9, 3 };
-        int[] digits =   { 7, 9, 0, 3, 4, 2, 4 };
-        int[] expected = { 7, 9, 0, 5, 9, 3, 4};
+        int[] digits = { 7, 9, 0, 3, 4, 2, 4 };
+        int[] expected = { 7, 9, 0, 5, 9, 3, 4 };
         int[] actual = digitBuilder.replaceDigits(digits, startIndex, newDigits);
         assertArrayEquals(expected, actual);
 

@@ -13,17 +13,18 @@ class DivisionVisualiserTest {
     }
 
     @ParameterizedTest
-    @CsvSource({ "78945, 4", "168345, 6", "0, 453", "25263263, 26302" })
+    @CsvSource({ "78945, 4", "168345, 6", "0, 453", "25263263, 26302", "688438887, 1", "75499764, 75499764",
+            "100000, 100", "120, 6" })
     void testDrawFirstThreeLines(int dividend, int divisor) {
-        divisionVisualiser.visualiseLongDivisionAlgorithm(dividend, divisor);
+        divisionVisualiser.drawFirstThreeLines(dividend, divisor);
         System.out.println();
     }
 
-    /*
     @ParameterizedTest
-    @CsvSource({ "78945, 4", "168345, 6", "0, 453", "25263263, 26302" })
+    @CsvSource({ "78945, 4", "168345, 6", "0, 453", "25263263, 26302", "688438887, 1", "75499764, 75499764",
+            "100000, 100", "120, 6" })
     void testVisualiseLongDivisionAlgorithm(int dividend, int divisor) {
         divisionVisualiser.visualiseLongDivisionAlgorithm(dividend, divisor);
         System.out.println();
-     */
+    }
 }
