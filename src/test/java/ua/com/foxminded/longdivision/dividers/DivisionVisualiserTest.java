@@ -7,14 +7,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import ua.com.foxminded.longdivision.dividers.DivisionMate;
+import ua.com.foxminded.longdivision.dividers.DivisionAssistant;
 
 class DivisionVisualiserTest {
-    private static DivisionMate divisionMate;
+    private static DivisionAssistant divisionMate;
     
     @BeforeAll
     public static void initialise() {
-        divisionMate = new DivisionMate();
+        divisionMate = new DivisionAssistant();
     }
 
     @Test

@@ -7,13 +7,13 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-class DigitBuilderTest {
+class DigitsHandlerTest {
 
-    private static DigitBuilder digitBuilder;
+    private static DigitsHandler digitBuilder;
 
     @BeforeAll
     public static void initialise() {
-        digitBuilder = new DigitBuilder();
+        digitBuilder = new DigitsHandler();
     }
 
     @ParameterizedTest(name = "number {0} consists of {1} digits")

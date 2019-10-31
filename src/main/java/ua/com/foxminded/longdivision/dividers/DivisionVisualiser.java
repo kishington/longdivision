@@ -7,7 +7,7 @@ public class DivisionVisualiser {
 
     public void visualiseLongDivisionAlgorithm(int dividendInt, int divisorInt) {
 
-        DivisionMate divisionMate = new DivisionMate();
+        DivisionAssistant divisionMate = new DivisionAssistant();
         
         int[] divisionResult = divisionMate.divide(dividendInt, divisorInt);
         int quotientInt = divisionResult[0];

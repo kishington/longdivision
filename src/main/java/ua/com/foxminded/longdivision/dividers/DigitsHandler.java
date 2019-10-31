@@ -1,6 +1,6 @@
 package ua.com.foxminded.longdivision.dividers;
 
-public class DigitBuilder {
+public class DigitsHandler {
 
     int[] replaceDigits(int[] digits, int startIndex, int[] newDigits) {
         int newDigitsIndex = 0;
@@ -10,6 +10,7 @@ public class DigitBuilder {
         }
         return digits;
     }
+    
 
     public int[] getDigits(int number) {
         int numberOfDigits = getNumberOfDigits(number);

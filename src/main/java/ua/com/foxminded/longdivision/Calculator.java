@@ -1,11 +1,11 @@
 package ua.com.foxminded.longdivision;
 
-import ua.com.foxminded.longdivision.dividers.DivisionMate;
+import ua.com.foxminded.longdivision.dividers.DivisionAssistant;
 
 public class Calculator {
 
     public static void main(String[] args) {
-        DivisionMate dMate = new DivisionMate();
+        DivisionAssistant dMate = new DivisionAssistant();
 
         int dividend = 675342;
         int divisor = 68;
