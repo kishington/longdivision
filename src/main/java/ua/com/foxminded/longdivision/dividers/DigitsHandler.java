@@ -11,7 +11,6 @@ public class DigitsHandler {
         return digits;
     }
     
-
     public int[] getDigits(int number) {
         int numberOfDigits = getNumberOfDigits(number);
         int[] digits = new int[numberOfDigits];
@@ -23,8 +22,7 @@ public class DigitsHandler {
         return digits;
     }
     
-    
-    int getNumberOfDigits(int number) {
+    public int getNumberOfDigits(int number) {
         if (number == 0) {
             return 1;
         }
@@ -34,6 +32,5 @@ public class DigitsHandler {
             numberOfDigits++;
         }
         return numberOfDigits;
-    }
-    
+    }   
 }

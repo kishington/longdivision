@@ -2,23 +2,10 @@ package ua.com.foxminded.longdivision.dividers;
 
 public class DivisionAssistant {
 
-    public String dividend;
-    public String divisor;
-
-    public DivisionAssistant() {
-        super();
-    }
-
-    public DivisionAssistant(int dividendInt, int divisorInt) {
-        dividend = String.valueOf(dividendInt);
-        divisor = String.valueOf(divisorInt);
-    }
-
     public int[] divide(int dividend, int divisor) throws IllegalArgumentException {
         if (dividend < 0 || divisor < 0) {
             throw new IllegalArgumentException("divident must be >= 0, divisor must be > 0");
         }
-
         int quotient = dividend / divisor;
         int remainder = dividend % divisor;
 
@@ -27,36 +14,38 @@ public class DivisionAssistant {
         return result;
     }
 
-
-
-    public int[] performLongDivision(int originalDividend, int divisor) {
+    public int[] performLongDivision(int dividend, int divisor) throws IllegalArgumentException {
+        if (dividend < 0 || divisor < 0) {
+            throw new IllegalArgumentException("divident must be >= 0, divisor must be > 0");
+        }
+        
         DigitsHandler digitsHandler = new DigitsHandler();
         
-        int fullQuotient = originalDividend / divisor;
-        int numberOfFullQuotientDigits = digitsHandler.getNumberOfDigits(fullQuotient);
-        int[] modifiedDividendDigits = digitsHandler.getDigits(originalDividend);
+        int quotient = dividend / divisor;
+        int numberOfQuotientDigits = digitsHandler.getNumberOfDigits(quotient);
+        int[] modifiedDividendDigits = digitsHandler.getDigits(dividend);
 
-        int[] dividends = new int[numberOfFullQuotientDigits];
+        int[] interimDividends = new int[numberOfQuotientDigits];
 
         int startIndex = 0;
-        dividends[0] = getNextDividend(modifiedDividendDigits, startIndex, divisor);
-        if (dividends.length >= 1) {
-            for (int i = 1; i < dividends.length; i++) {
-                int currentRemainder = dividends[i-1] % divisor;
+        interimDividends[0] = getNextDividend(modifiedDividendDigits, startIndex, divisor);
+        if (interimDividends.length >= 1) {
+            for (int i = 1; i < interimDividends.length; i++) {
+                int currentRemainder = interimDividends[i-1] % divisor;
                 int currentRemainderLength = digitsHandler.getNumberOfDigits(currentRemainder); 
                 int[] currentRemainderDigits = digitsHandler.getDigits(currentRemainder);
                 
-                int previousDividendLength = digitsHandler.getNumberOfDigits(dividends[i-1]);
+                int previousDividendLength = digitsHandler.getNumberOfDigits(interimDividends[i-1]);
                 startIndex = startIndex + previousDividendLength - currentRemainderLength;
                 
                 modifiedDividendDigits = digitsHandler.replaceDigits(modifiedDividendDigits, startIndex, currentRemainderDigits);
                 if (currentRemainder == 0) {
                    startIndex++;
                 }
-                dividends[i] = getNextDividend(modifiedDividendDigits, startIndex, divisor);
+                interimDividends[i] = getNextDividend(modifiedDividendDigits, startIndex, divisor);
             }
         }
-        return dividends;
+        return interimDividends;
     }
 
     public int getNextDividend(int[] digits, int startIndex, int divisor) {

@@ -10,26 +10,36 @@ import org.junit.jupiter.params.provider.CsvSource;
 import ua.com.foxminded.longdivision.dividers.DivisionAssistant;
 
 class DivisionVisualiserTest {
-    private static DivisionAssistant divisionMate;
+    private static DivisionAssistant divisionAssistant;
+    private static DivisionVisualiser divisionVisualiser;
     
     @BeforeAll
     public static void initialise() {
-        divisionMate = new DivisionAssistant();
+        divisionAssistant = new DivisionAssistant();
+        divisionVisualiser = new DivisionVisualiser();
     }
 
     @Test
+    void testVisualiseLongDivisionAlgorithm() {
+        int dividendInt = 78945;
+        int divisorInt = 4;
+        divisionVisualiser.visualiseLongDivisionAlgorithm(dividendInt, divisorInt);
+    }
+    
+ /*   
+    @Test
     public void divide_NegativeNumberAs1stArgument_IllegalArgumentExceptionThrown() {
-        assertThrows(IllegalArgumentException.class, () -> divisionMate.divide(-4, 6));
+        assertThrows(IllegalArgumentException.class, () -> divisionAssistant.divide(-4, 6));
     }
     
     @Test
     public void divide_NegativeNumberAs2ndArgument_IllegalArgumentExceptionThrown() {
-        assertThrows(IllegalArgumentException.class, () -> divisionMate.divide(2, -8));
+        assertThrows(IllegalArgumentException.class, () -> divisionAssistant.divide(2, -8));
     }
     
     @Test
     public void divide_ZeroAs2ndArgument_ArithmeticExceptionThrown() {
-        assertThrows(ArithmeticException.class, () -> divisionMate.divide(4, 0));
+        assertThrows(ArithmeticException.class, () -> divisionAssistant.divide(4, 0));
     }
     
     
@@ -43,9 +53,9 @@ class DivisionVisualiserTest {
     })
     void divide_ValidArgumentsPassed_ReturnsCorrectOutput(int dividend, int divisor, int expectedQuotient, int expectedRemainder) {
         int[] expectedResult = new int[] {expectedQuotient, expectedRemainder};
-        int[] actualResult = divisionMate.divide(dividend, divisor);
+        int[] actualResult = divisionAssistant.divide(dividend, divisor);
         assertArrayEquals(expectedResult, actualResult);
     }
-
+*/
 }
 
