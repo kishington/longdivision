@@ -2,8 +2,8 @@ package ua.com.foxminded.longdivision.dividers;
 
 public class DivisionVisualiser {
 
-    public void visualise(int dividend, int divisor) {
-        drawFirstThreeLines(dividend, divisor);
+    public String visualise(int dividend, int divisor) {
+        StringBuilder output = getFirstThreeLines(dividend, divisor);
 
         DigitsHandler digitsHandler = new DigitsHandler();
         DivisionAssistant divisionAssistant = new DivisionAssistant();
@@ -26,28 +26,30 @@ public class DivisionVisualiser {
             } else {
                 numberOfSpacesFromLeftEdge += currentMultipleLength - currentRemainderLength;
             }
-            lPad(' ', numberOfSpacesFromLeftEdge);
-            System.out.print("_" + interimDividends[i] + "\n");
+            output.append(lPad(' ', numberOfSpacesFromLeftEdge));
+            output.append("_" + interimDividends[i] + "\n");
 
             currentMultiple = interimDividends[i] / divisor * divisor;
             currentRemainder = interimDividends[i] % divisor;
             currentMultipleLength = digitsHandler.getNumberOfDigits(currentMultiple);
+            currentRemainderLength = digitsHandler.getNumberOfDigits(currentRemainder);
             currentInterimDividendLength = digitsHandler.getNumberOfDigits(interimDividends[i]);
             numberOfSpacesFromLeftEdge += 1 + currentInterimDividendLength - currentMultipleLength;
-            lPad(' ', numberOfSpacesFromLeftEdge);
-            System.out.print(currentMultiple + "\n");
+            output.append(lPad(' ', numberOfSpacesFromLeftEdge));
+            output.append(currentMultiple + "\n");
 
-            lPad(' ', numberOfSpacesFromLeftEdge);
-            lPad('-', currentMultipleLength);
-            System.out.println();
+            output.append(lPad(' ', numberOfSpacesFromLeftEdge));
+            output.append(lPad('-', currentMultipleLength));
+            output.append("\n");
         }
         numberOfSpacesFromLeftEdge += currentMultipleLength - remainderLength;
-        lPad(' ', numberOfSpacesFromLeftEdge);
-        System.out.println(remainder);
+        output.append(lPad(' ', numberOfSpacesFromLeftEdge));
+        output.append(remainder + "\n");
 
+        return output.toString();
     }
 
-    void drawFirstThreeLines(int dividend, int divisor) {
+    public StringBuilder getFirstThreeLines(int dividend, int divisor) {
 
         int quotient = dividend / divisor;
 
@@ -65,32 +67,34 @@ public class DivisionVisualiser {
 
         int numberOfSpacesFromLeftEdge = 1 + firstInterimDividendLength - firstMultipleLength;
 
-        System.out.println("_" + dividend + "|" + divisor);
+        StringBuilder firstThreeLines = new StringBuilder();
+        firstThreeLines.append("_" + dividend + "|" + divisor + "\n");
 
-        lPad(' ', numberOfSpacesFromLeftEdge);
-        System.out.print(firstMultiple);
+        firstThreeLines.append(lPad(' ', numberOfSpacesFromLeftEdge));
+        firstThreeLines.append(firstMultiple);
         int numberOfSpacesTillBar = 1 + dividendLength - numberOfSpacesFromLeftEdge - firstMultipleLength;
-        lPad(' ', numberOfSpacesTillBar);
-        System.out.print("|");
+        firstThreeLines.append(lPad(' ', numberOfSpacesTillBar));
+        firstThreeLines.append('|');
         if (divisorLength > quotientLength) {
-            lPad('-', divisorLength);
+            firstThreeLines.append(lPad('-', divisorLength));
         } else {
-            lPad('-', quotientLength);
+            firstThreeLines.append(lPad('-', quotientLength));
         }
-        System.out.println();
+        firstThreeLines.append("\n");
 
-        lPad(' ', numberOfSpacesFromLeftEdge);
-        lPad('-', firstMultipleLength);
-        lPad(' ', numberOfSpacesTillBar);
-        System.out.println("|" + quotient);
+        firstThreeLines.append(lPad(' ', numberOfSpacesFromLeftEdge));
+        firstThreeLines.append(lPad('-', firstMultipleLength));
+        firstThreeLines.append(lPad(' ', numberOfSpacesTillBar));
+        firstThreeLines.append("|" + quotient + "\n");
+        
+        return firstThreeLines;
     }
-
-    public void lPad(char ch, int n) {
-        char[] chars = new char[n];
-        for (int i = 0; i < chars.length; i++) {
-            chars[i] = ch;
+    
+    private StringBuilder lPad(char ch, int n) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < n; i++) {
+            sb.append(ch);
         }
-        String str = new String(chars);
-        System.out.print(str);
+        return (sb);
     }
 }

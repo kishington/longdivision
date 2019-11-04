@@ -9,6 +9,7 @@ public class Calculator {
         int divisor = 4;
 
         DivisionVisualiser divisionVisualiser = new DivisionVisualiser();
-        divisionVisualiser.visualiseLongDivisionAlgorithm(dividend, divisor);
+        String visualisedDivisionResult = divisionVisualiser.visualise(dividend, divisor);
+        System.out.println(visualisedDivisionResult);
     }
 }
