@@ -26,7 +26,7 @@ public class DivisionVisualiser {
             } else {
                 numberOfSpacesFromLeftEdge += currentMultipleLength - currentRemainderLength;
             }
-            printCharNTimes(' ', numberOfSpacesFromLeftEdge);
+            lPad(' ', numberOfSpacesFromLeftEdge);
             System.out.print("_" + interimDividends[i] + "\n");
 
             currentMultiple = interimDividends[i] / divisor * divisor;
@@ -34,15 +34,15 @@ public class DivisionVisualiser {
             currentMultipleLength = digitsHandler.getNumberOfDigits(currentMultiple);
             currentInterimDividendLength = digitsHandler.getNumberOfDigits(interimDividends[i]);
             numberOfSpacesFromLeftEdge += 1 + currentInterimDividendLength - currentMultipleLength;
-            printCharNTimes(' ', numberOfSpacesFromLeftEdge);
+            lPad(' ', numberOfSpacesFromLeftEdge);
             System.out.print(currentMultiple + "\n");
 
-            printCharNTimes(' ', numberOfSpacesFromLeftEdge);
-            printCharNTimes('-', currentMultipleLength);
+            lPad(' ', numberOfSpacesFromLeftEdge);
+            lPad('-', currentMultipleLength);
             System.out.println();
         }
         numberOfSpacesFromLeftEdge += currentMultipleLength - remainderLength;
-        printCharNTimes(' ', numberOfSpacesFromLeftEdge);
+        lPad(' ', numberOfSpacesFromLeftEdge);
         System.out.println(remainder);
 
     }
@@ -67,25 +67,25 @@ public class DivisionVisualiser {
 
         System.out.println("_" + dividend + "|" + divisor);
 
-        printCharNTimes(' ', numberOfSpacesFromLeftEdge);
+        lPad(' ', numberOfSpacesFromLeftEdge);
         System.out.print(firstMultiple);
         int numberOfSpacesTillBar = 1 + dividendLength - numberOfSpacesFromLeftEdge - firstMultipleLength;
-        printCharNTimes(' ', numberOfSpacesTillBar);
+        lPad(' ', numberOfSpacesTillBar);
         System.out.print("|");
         if (divisorLength > quotientLength) {
-            printCharNTimes('-', divisorLength);
+            lPad('-', divisorLength);
         } else {
-            printCharNTimes('-', quotientLength);
+            lPad('-', quotientLength);
         }
         System.out.println();
 
-        printCharNTimes(' ', numberOfSpacesFromLeftEdge);
-        printCharNTimes('-', firstMultipleLength);
-        printCharNTimes(' ', numberOfSpacesTillBar);
+        lPad(' ', numberOfSpacesFromLeftEdge);
+        lPad('-', firstMultipleLength);
+        lPad(' ', numberOfSpacesTillBar);
         System.out.println("|" + quotient);
     }
 
-    public void printCharNTimes(char ch, int n) {
+    public void lPad(char ch, int n) {
         char[] chars = new char[n];
         for (int i = 0; i < chars.length; i++) {
             chars[i] = ch;
