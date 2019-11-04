@@ -2,7 +2,7 @@ package ua.com.foxminded.longdivision.dividers;
 
 public class DivisionVisualiser {
 
-    public void visualiseLongDivisionAlgorithm(int dividend, int divisor) {
+    public void visualise(int dividend, int divisor) {
         drawFirstThreeLines(dividend, divisor);
 
         DigitsHandler digitsHandler = new DigitsHandler();
