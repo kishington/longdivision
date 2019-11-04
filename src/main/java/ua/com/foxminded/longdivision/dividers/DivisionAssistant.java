@@ -2,7 +2,7 @@ package ua.com.foxminded.longdivision.dividers;
 
 public class DivisionAssistant {
 
-    public int[] performLongDivision(int dividend, int divisor) throws IllegalArgumentException {
+    public int[] performLongDivision(int dividend, int divisor) {
         if (dividend < 0 || divisor < 0) {
             throw new IllegalArgumentException("divident must be >= 0, divisor must be > 0");
         }
